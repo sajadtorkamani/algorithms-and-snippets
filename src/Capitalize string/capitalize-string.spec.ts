@@ -4,8 +4,8 @@ describe('capitalize', () => {
     ['JOHN', 'John'],
     ['john doe', 'John doe'],
     ['JOHN DOE', 'John doe'],
-  ])('Converts %s to %s', (input, expectedOutput) => {
-    expect(capitalize(input)).toEqual(expectedOutput)
+  ])('Converts %s to %s', (input, expectedResult) => {
+    expect(capitalize(input)).toEqual(expectedResult)
   })
 })
 
