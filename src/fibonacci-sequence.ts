@@ -7,7 +7,7 @@ export function fibbonaciSequence(num: number): number[] {
   }
 
   if (num === 1) {
-    return [0]
+    return [sequence[0]]
   }
 
   // Generate sequence
