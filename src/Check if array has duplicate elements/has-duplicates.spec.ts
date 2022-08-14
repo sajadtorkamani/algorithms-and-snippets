@@ -7,7 +7,7 @@ describe('hasDuplicates', () => {
     [[2, 4, 4, 6], true],
     [[2, 4, 6, 1, 6], true],
   ])(
-    'returns true of array has duplicates (e.g., %s)',
+    'returns true if array has duplicates (e.g., %s)',
     (input, expectedResult) => {
       expect(hasDuplicates(input)).toEqual(expectedResult)
     }
