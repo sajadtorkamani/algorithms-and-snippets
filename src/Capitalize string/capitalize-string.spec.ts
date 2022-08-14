@@ -1,3 +1,7 @@
+function capitalize(str: string) {
+  return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase()
+}
+
 describe('capitalize', () => {
   test.each([
     ['john', 'John'],
@@ -8,7 +12,3 @@ describe('capitalize', () => {
     expect(capitalize(input)).toEqual(expectedResult)
   })
 })
-
-export function capitalize(str: string) {
-  return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase()
-}
