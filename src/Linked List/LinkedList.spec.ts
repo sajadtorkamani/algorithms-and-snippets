@@ -12,18 +12,20 @@ class LinkedList<T> {
   private head: LinkedListNode<T> | null
   public length: number
 
-  constructor(headOrInitialData: LinkedListNode<T> | null | T[] = null) {
-    if (Array.isArray(headOrInitialData)) {
-      this.head = new LinkedListNode<T>(headOrInitialData[0])
-      headOrInitialData.slice(1).forEach((data) => {
+  constructor(head: LinkedListNode<T> | null | T[] = null) {
+    if (Array.isArray(head)) {
+      let initialData = head
+      this.head =
+        initialData.length > 0 ? new LinkedListNode<T>(initialData[0]) : null
+      initialData.slice(1).forEach((data) => {
         this.append(data)
       })
 
-      this.length = headOrInitialData.length
+      this.length = initialData.length
       return
     }
 
-    this.head = headOrInitialData
+    this.head = head
     this.length = 0
   }
 
@@ -49,34 +51,6 @@ class LinkedList<T> {
     this.length++
 
     return this
-  }
-
-  public size() {
-    return this.length
-  }
-
-  public getFirst() {
-    return this.head
-  }
-
-  public getLast() {
-    return this.head
-  }
-
-  public toArray() {
-    if (!this.head) {
-      return []
-    }
-
-    let current = this.head
-    let array = [current.data]
-
-    while (current.next) {
-      current = current.next
-      array.push(current.data)
-    }
-
-    return array
   }
 
   public insertAt(data: T, insertionIndex: number) {
@@ -115,6 +89,34 @@ class LinkedList<T> {
     }
   }
 
+  public size() {
+    return this.length
+  }
+
+  public getFirst() {
+    return this.head
+  }
+
+  public getLast() {
+    return this.head
+  }
+
+  public toArray() {
+    if (!this.head) {
+      return []
+    }
+
+    let current = this.head
+    let array = [current.data]
+
+    while (current.next) {
+      current = current.next
+      array.push(current.data)
+    }
+
+    return array
+  }
+
   public isEmpty() {
     return this.head === null
   }
@@ -133,29 +135,21 @@ describe('LinkedList', () => {
     it('can create list with initial data', () => {
       const list = new LinkedList([2, 4, 6])
 
-      expect(list.size()).toBe(3)
       expect(list.toArray()).toEqual([2, 4, 6])
     })
   })
 
   describe('#append', () => {
     it('can append nodes to list', () => {
-      const list = new LinkedList()
+      const list = new LinkedList([2, 4, 6])
 
-      list.append(2)
-      list.append(4)
-      list.append(6)
-
-      expect(list.size()).toBe(3)
       expect(list.toArray()).toEqual([2, 4, 6])
     })
   })
 
   describe('#insertAt', () => {
     it('inserts node at index', () => {
-      const list = new LinkedList()
-      list.append(1).append(2).append(3)
-      expect(list.toArray()).toEqual([1, 2, 3])
+      const list = new LinkedList([1, 2, 3])
 
       list.insertAt(500, 1)
 
@@ -163,12 +157,8 @@ describe('LinkedList', () => {
     })
 
     it('throws error if index is invalid', () => {
-      const list = new LinkedList()
-      list.append(1).append(2).append(3)
+      const list = new LinkedList([1, 2, 3])
 
-      expect(list.toArray()).toEqual([1, 2, 3])
-
-      expect(list.toArray()).toEqual([1, 2, 3])
       expect(() => {
         list.insertAt(500, 5)
       }).toThrowError(`Index out of bounds: 5`)
