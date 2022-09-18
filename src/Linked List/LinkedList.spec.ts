@@ -53,40 +53,28 @@ class LinkedList<T> {
     return this
   }
 
-  public insertAt(data: T, insertionIndex: number) {
-    if (insertionIndex < 0) {
-      throw new Error(`Index must be greater or equal to 0`)
+  public indexOf(data: T): number {
+    if (this.isEmpty()) {
+      return -1
     }
 
-    // if (this.isEmpty()) {
-    //   this.head = new LinkedListNode<T>()
-    // }
-
-    if (insertionIndex > this.length - 1) {
-      throw new Error(`Index out of bounds: ${insertionIndex}`)
-    }
-
-    // Start from the head
+    // Start from head
     let current = this.head
-    let currentIndex = 0
+    let index = 0
 
-    // Handle special case: empty list
-    if (current === null) {
-      current = new LinkedListNode<T>(data)
-    }
-
-    // Traverse through list
-    while (current.next) {
-      currentIndex++
-      if (insertionIndex === currentIndex) {
-        const prevNext = current.next
-        const newNode = new LinkedListNode<T>(data)
-        current.next = newNode
-        newNode.next = prevNext
-      } else {
-        current = current.next
+    // Keep traversing list until we find the given data
+    while (current !== null) {
+      if (current.data === data) {
+        // We've found it. Return the index
+        return index
       }
+
+      index++
+      current = current.next
     }
+
+    // We've traversed the list but haven't found the data.
+    return -1
   }
 
   public size() {
@@ -147,21 +135,43 @@ describe('LinkedList', () => {
     })
   })
 
-  describe('#insertAt', () => {
-    it('inserts node at index', () => {
-      const list = new LinkedList([1, 2, 3])
+  // describe('#insertAt', () => {
+  //   it('inserts node at index', () => {
+  //     const list = new LinkedList([1, 2, 3])
+  //
+  //     list.insertAt(500, 2)
+  //
+  //     expect(list.toArray()).toEqual([1, 500, 2, 3])
+  //   })
+  //
+  //   it('inserts node at index 0', () => {
+  //     const list = new LinkedList([1, 2, 3])
+  //
+  //     list.insertAt(500, 0)
+  //
+  //     expect(list.toArray()).toEqual([500, 1, 2, 3])
+  //   })
+  //
+  //   it('throws error if index is invalid', () => {
+  //     const list = new LinkedList([1, 2, 3])
+  //
+  //     expect(() => {
+  //       list.insertAt(500, 5)
+  //     }).toThrowError(`Index out of bounds: 5`)
+  //   })
+  // })
 
-      list.insertAt(500, 1)
+  describe('indexOf', () => {
+    it('returns index of data within the list', () => {
+      const list = new LinkedList([2, 4, 6, 8])
 
-      expect(list.toArray()).toEqual([1, 500, 2, 3])
+      expect(list.indexOf(6)).toEqual(2)
     })
 
-    it('throws error if index is invalid', () => {
-      const list = new LinkedList([1, 2, 3])
+    it("returns -1 if list doesn't have the data", () => {
+      const list = new LinkedList([2, 4, 6, 8])
 
-      expect(() => {
-        list.insertAt(500, 5)
-      }).toThrowError(`Index out of bounds: 5`)
+      expect(list.indexOf(10)).toEqual(-1)
     })
   })
 })
