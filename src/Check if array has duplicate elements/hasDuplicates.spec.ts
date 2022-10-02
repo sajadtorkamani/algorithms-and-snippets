@@ -1,6 +1,4 @@
-function hasDuplicates(arr: any[]) {
-  return new Set(arr).size !== arr.length
-}
+import { hasDuplicates } from './hasDuplicates'
 
 describe('hasDuplicates', () => {
   test.each([
