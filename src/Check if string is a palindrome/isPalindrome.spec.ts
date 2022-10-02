@@ -1,6 +1,4 @@
-function isPalindrome(str: string) {
-  return str === str.split('').reverse().join('')
-}
+import { isPalindrome } from './isPalindrome'
 
 describe('isPalindrome', () => {
   test.each([['john'], ['jim'], ['michael']])(
