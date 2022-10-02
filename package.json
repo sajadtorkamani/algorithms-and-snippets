@@ -7,7 +7,7 @@
     "format:check": "prettier --check src/",
     "format:fix": "prettier --write src/",
     "test": "jest",
-    "test:watch": "jest"
+    "test:watch": "jest --watch"
   },
   "author": "Sajad Torkamani <sajadtorkamani1@gmail.com>",
   "license": "MIT",
