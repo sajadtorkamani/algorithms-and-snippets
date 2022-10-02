@@ -6,7 +6,8 @@
   "scripts": {
     "format:check": "prettier --check src/",
     "format:fix": "prettier --write src/",
-    "test": "jest --watch"
+    "test": "jest",
+    "test:watch": "jest"
   },
   "author": "Sajad Torkamani <sajadtorkamani1@gmail.com>",
   "license": "MIT",
