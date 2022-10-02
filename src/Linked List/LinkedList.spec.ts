@@ -1,3 +1,4 @@
+// WIP
 class LinkedListNode<T> {
   public data: T
   public next: LinkedListNode<T> | null
