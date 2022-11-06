@@ -5,7 +5,7 @@ export function isPrimeNumber(num: number): boolean {
   }
 
   for (let n = 2; n < num; n++) {
-    // If the number is divisisble by any number other than itself and 1,
+    // If the number is divisible by any number other than itself and 1,
     // it's not a prime so return false
     if (num % n === 0) {
       return false
