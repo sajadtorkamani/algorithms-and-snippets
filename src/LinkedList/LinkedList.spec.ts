@@ -1,8 +1,10 @@
+import { describe, test, expect } from 'vitest'
+
 import { LinkedList } from './LinkedList'
 
 describe('LinkedList', () => {
   describe('#constructor', () => {
-    it('can create empty list', () => {
+    test('can create empty list', () => {
       const list = new LinkedList()
 
       expect(list.size()).toBe(0)
@@ -10,7 +12,7 @@ describe('LinkedList', () => {
       expect(list.getLast()).toBe(null)
     })
 
-    it('can create list with initial data', () => {
+    test('can create list with initial data', () => {
       const list = new LinkedList([2, 4, 6])
 
       expect(list.toArray()).toEqual([2, 4, 6])
@@ -18,7 +20,7 @@ describe('LinkedList', () => {
   })
 
   describe('#append', () => {
-    it('can append nodes to list', () => {
+    test('can append nodes to list', () => {
       const list = new LinkedList([2, 4, 6])
 
       expect(list.toArray()).toEqual([2, 4, 6])
@@ -52,13 +54,13 @@ describe('LinkedList', () => {
   // })
 
   describe('indexOf', () => {
-    it('returns index of data within the list', () => {
+    test('returns index of data within the list', () => {
       const list = new LinkedList([2, 4, 6, 8])
 
       expect(list.indexOf(6)).toEqual(2)
     })
 
-    it("returns -1 if list doesn't have the data", () => {
+    test("returns -1 if list doesn't have the data", () => {
       const list = new LinkedList([2, 4, 6, 8])
 
       expect(list.indexOf(10)).toEqual(-1)

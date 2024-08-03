@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest'
+
 import { getConsecutiveElements } from './getConsecutiveElements'
 
 describe('getConsecutiveElements', () => {

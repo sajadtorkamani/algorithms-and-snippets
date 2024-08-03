@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest'
+
 import { capitalize } from './capitalizeString'
 
 describe('capitalize', () => {
@@ -5,7 +7,7 @@ describe('capitalize', () => {
     ['john', 'John'],
     ['JOHN', 'John'],
     ['john doe', 'John doe'],
-    ['JOHN DOE', 'John doe'],
+    ['JOHN DOE', 'John doe']
   ])(
     'Capitalizes the first letter of the string and lowercases the rest (e.g., %s to %s)',
     (input, expectedResult) => {

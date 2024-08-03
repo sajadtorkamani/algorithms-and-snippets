@@ -1,3 +1,5 @@
+import { describe, test, expect } from 'vitest'
+
 import { isPrimeNumber } from './isPrimeNumber'
 
 describe('isPrimeNumber', () => {
